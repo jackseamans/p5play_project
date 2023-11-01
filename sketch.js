@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-    new Canvas(160, 144, 'pixelated x2.5');
+    new Canvas(160, 144, 'pixelated x4');
     allSprites.pixelPerfect = true;
 
     coin = new Sprite(80, 60, 10);
