@@ -1,64 +1,88 @@
-// a simple game where you click to drop a ball and 
-// try to get as many balls as possible on the spinning shape
-// move the mouse up and down to change the rotation speed of the shape
-// use the right and left keys to make the shape larger or smaller
+let kitty; floor; fence; wall; coin; coin2; score = 0;
 
-let spinningShape;
-let highScore = 0;
+function preload() {
+    kitty = new Sprite(55, 20, 14, 16);
+    kitty.spriteSheet = 'assets/Basic Charakter Spritesheet 14x16.png';
+    kitty.addAnis({
+        front: { row: 0, frames: 4 },
+        back: { row: 1, frames: 4 },
+        left:  { row: 2, frames: 4 },
+        right: { row: 3, frames: 4 },
+    });
+    kitty.changeAni('front');
+    kitty.x = 10;
+    kitty.y = 105;
+}
 
 function setup() {
-    let canvas = new Canvas("fullscreen");
+    new Canvas(160, 144, 'pixelated x2.5');
+    allSprites.pixelPerfect = true;
 
-    world.gravity.y = 10;
+    coin = new Sprite(80, 60, 10);
+    coin.color = 'yellow';
+    coin2 = new Sprite(80, 90, 10);
+	coin2.color = 'yellow';
 
-    // this sprite can be created on a single line, but it's easier to read this way:
-	spinningShape = new Sprite();
-	spinningShape.width = canvas.width/5;
-	spinningShape.height = spinningShape.width;
-    spinningShape.collider = "kinematic";
+    wall = new Sprite(); { 
+    wall.w = 200;
+    wall.h = 32;
+    wall.y = 10;
+    wall.color = 'gray';
+    wall.collider = "static";
+    }
+    
+    bed = new Sprite(); {
+    bed.w = 24;
+    bed.h = 32;
+    bed.y = 70;
+    bed.x = 30;
+    bed.color = 'tan';
+    bed.collider = "static";
+    }
 
-    textFont("Courier", 24);
+    bed2 = new Sprite(); {
+    bed2.w = 24;
+    bed2.h = 32;
+    bed2.y = 70;
+    bed2.x = 130;
+    bed2.color = 'tan';
+    bed2.collider = "static";
+    }
+    
+    floor = new Sprite(); {
+    floor.x = 80;
+    floor.y = 140;
+    floor.width = 200;
+    floor.height = 10;
+    floor.color = 'lightgray';
+    floor.collider = "static";
+    }
 }
 
 function draw() {
-
-    // try the game without this line :)
     clear();
 
-    // the map function translates a value from one range to another
-    // https://p5js.org/reference/#/p5/map
-    spinningShape.rotationSpeed = map(mouse.y, 0, canvas.height, -10, 10);
+    kitty.rotation = 0;
 
-    // create a ball when the mouse is clicked
-    // https://p5play.org/learn/input_devices.html
-    if (mouse.presses()) {
-        let ball = new Sprite(mouse.x, -20, 20);
-        // make the ball resist rolling when it touches the spinning shape
-        // https://p5play.org/learn/sprite.html?page=9
-        ball.rotationDrag = 10;
+    if (kb.pressing('left')){kitty.vel.x = -1;
+        kitty.changeAni('left');
+    }
+    else if (kb.pressing('right')) {kitty.vel.x = 1;
+        kitty.changeAni('right');}
+    else if (kb.pressing('up')) {kitty.vel.y = -1;
+        kitty.changeAni('back');}
+    else if (kb.pressing('down')) {kitty.vel.y = 1;
+        kitty.changeAni('front');}
+    else {kitty.vel.x = 0;
+    kitty.vel.y = 0};
+
+    if (kitty.overlaps(coin)) {
+    coin.remove();
+    }
+    if (kitty.overlaps(coin2)) {
+    coin2.remove();
     }
 
-    // make the spinning shape larger or smaller using the keyboard
-    // note the difference between presses (above) and pressing (here)
-    if (kb.pressing('right')) {
-        spinningShape.width += 10;
-    } else if (kb.pressing('left')) {
-        spinningShape.width -= 10;
-    }
-
-    // loop through the allSprites array and see how many are above the center of the screen
-    let currentScore = 0;
-    for (let sprite of allSprites) {
-        if (sprite.y < canvas.height/2) {
-            currentScore++;
-            if (currentScore > highScore) {
-                highScore = currentScore;
-            }
-        }
-    }
-
-    // display the score (minus 1 so it doesn't count the spinning shape)
-    text("BALLS: " + (currentScore-1), 40, 60);
-    text("HIGH:  " + (highScore-1), 40, 86);
+    
 
 }
