@@ -1,4 +1,4 @@
-let kitty;
+let sheep;
 let floor; 
 let fence;
 let score = 0;
@@ -6,17 +6,17 @@ let score = 0;
 function preload() {
     sheetImg = loadImage("assets/Tiles-and-Enemies.png" );
     sky = loadImage("assets/NightSky.gif");
-    kitty = new Sprite(55, 20, 14, 16);
-    kitty.spriteSheet = 'assets/Basic Charakter Spritesheet 14x16.png';
-    kitty.addAnis({
-        front: { row: 0, frames: 4 },
-        back: { row: 1, frames: 4 },
-        left:  { row: 2, frames: 4 },
-        right: { row: 3, frames: 4 },
+    sheep = new Sprite(5, 10, 60, 52);
+    sheep.spriteSheet = 'assets/SheepSprite.png';
+    sheep.addAnis({
+        right: { row: 0, frames: 16 },
+        // back: { row: 1, frames: 4 },
+        // left:  { row: 2, frames: 4 },
+        // right: { row: 3, frames: 4 },
     });
-    kitty.changeAni('front');
-    kitty.x = 10;
-    kitty.y = 80;
+    sheep.changeAni('right');
+    sheep.x = 30;
+    sheep.y = 85;
 }
 
 function setup() {
@@ -48,8 +48,8 @@ function setup() {
     new Tiles(
         [
 
-            '..........f..........',
-            '..........f..........',
+            '..........fff........',
+            '..........fff........',
             'ggggggggggggggggggggg',
             'ddddddddddddddddddddd',
             'ddddddddddddddddddddd',
@@ -69,38 +69,38 @@ function draw() {
     // textSize(20);
     text(score, 137, 20);
 
-    kitty.rotation = 0;
+    sheep.rotation = 0;
 
     if (kb.pressing('left')) {
-        kitty.vel.x = -1;
-        kitty.changeAni('left');
+        sheep.vel.x = -1;
+        // sheep.changeAni('left');
     }
     else if (kb.pressing('right')) {
-        kitty.vel.x = 1;
-        kitty.changeAni('right');
+        sheep.vel.x = 1;
+        sheep.changeAni('right');
       
     }
-    else {kitty.vel.x = 0;
+    else {sheep.vel.x = 0;
     }
 
     if (kb.presses('up')) {
-        kitty.vel.y = 4;
+        sheep.vel.y = 6;
     }
 
-    if (kitty.x >= 135) {
+    if (sheep.x >= 135) {
         score = score + 1;
-        kitty.changeAni('front');
-        kitty.x = 10;
-        kitty.y = 105;
+        // kitty.changeAni('front');
+        sheep.x = 10;
+        sheep.y = 105;
     }
 
-    if (kitty.y >= 105) {
-        kitty.changeAni('front');
-        kitty.x = 10;
-        kitty.y = 105;
+    if (sheep.y >= 105) {
+        // kitty.changeAni('front');
+        sheep.x = 10;
+        sheep.y = 105;
     }
 
-    if (score >= 10) {
+    if (score >= 5) {
         location.href = "index2.html"
     }
 }

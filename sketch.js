@@ -1,17 +1,17 @@
-let kitty; floor; fence; wall; coin; coin2; score = 0;
+let boy; floor; fence; wall; coin; coin2; score = 0;
 
 function preload() {
-    kitty = new Sprite(55, 20, 14, 16);
-    kitty.spriteSheet = 'assets/Basic Charakter Spritesheet 14x16.png';
-    kitty.addAnis({
+    boy = new Sprite(55, 20, 17, 27);
+    boy.spriteSheet = 'assets/BoySprite.png';
+    boy.addAnis({
         front: { row: 0, frames: 4 },
-        back: { row: 1, frames: 4 },
-        left:  { row: 2, frames: 4 },
-        right: { row: 3, frames: 4 },
+        left:  { row: 1, frames: 4 },
+        right: { row: 2, frames: 4 },
+        back: { row: 3, frames: 4 },
     });
-    kitty.changeAni('front');
-    kitty.x = 10;
-    kitty.y = 105;
+    boy.changeAni('front');
+    boy.x = 10;
+    boy.y = 105;
 }
 
 function setup() {
@@ -62,24 +62,24 @@ function setup() {
 function draw() {
     clear();
 
-    kitty.rotation = 0;
+    boy.rotation = 0;
 
-    if (kb.pressing('left')){kitty.vel.x = -1;
-        kitty.changeAni('left');
+    if (kb.pressing('left')){boy.vel.x = -1;
+        boy.changeAni('left');
     }
-    else if (kb.pressing('right')) {kitty.vel.x = 1;
-        kitty.changeAni('right');}
-    else if (kb.pressing('up')) {kitty.vel.y = -1;
-        kitty.changeAni('back');}
-    else if (kb.pressing('down')) {kitty.vel.y = 1;
-        kitty.changeAni('front');}
-    else {kitty.vel.x = 0;
-    kitty.vel.y = 0};
+    else if (kb.pressing('right')) {boy.vel.x = 1;
+        boy.changeAni('right');}
+    else if (kb.pressing('up')) {boy.vel.y = -1;
+        boy.changeAni('back');}
+    else if (kb.pressing('down')) {boy.vel.y = 1;
+        boy.changeAni('front');}
+    else {boy.vel.x = 0;
+        boy.vel.y = 0};
 
-    if (kitty.overlaps(coin)) {
+    if (boy.overlaps(coin)) {
     coin.remove();
     }
-    if (kitty.overlaps(coin2)) {
+    if (boy.overlaps(coin2)) {
     coin2.remove();
     }
 
