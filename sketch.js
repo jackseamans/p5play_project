@@ -16,65 +16,78 @@ function preload() {
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
+    frameRate(30);
     allSprites.pixelPerfect = true;
+
+    wall = new Sprite(80, 15, 160, 31);
+    wall.img = 'assets/BedroomWallSprite.png';
+    wall.collider = "static";
+
+    shelf = new Sprite(20, 28, 40, 32);
+    shelf.img = 'assets/BookshelfSprite.png'
+    shelf.collider = "static";
 
     coin = new Sprite(80, 60, 10);
     coin.color = 'yellow';
     coin2 = new Sprite(80, 90, 10);
 	coin2.color = 'yellow';
-
-    wall = new Sprite(); { 
-    wall.w = 200;
-    wall.h = 32;
-    wall.y = 10;
-    wall.color = 'gray';
-    wall.collider = "static";
-    }
     
-    bed = new Sprite(); {
-    bed.w = 24;
-    bed.h = 32;
-    bed.y = 70;
-    bed.x = 30;
-    bed.color = 'tan';
-    bed.collider = "static";
-    }
+    bed1 = new Sprite(40, 87, 37, 55);
+    bed1.img = 'assets/Bed1Sprite.png';
+    bed1.collider = "static";
 
-    bed2 = new Sprite(); {
-    bed2.w = 24;
-    bed2.h = 32;
-    bed2.y = 70;
-    bed2.x = 130;
-    bed2.color = 'tan';
-    bed2.collider = "static";
-    }
+    bed2 = new Sprite(120, 87, 37, 55);
+    bed2.img = 'assets/Bed2Sprite.png';
+    bed2.collider = "static"; 
     
-    floor = new Sprite(); {
-    floor.x = 80;
-    floor.y = 140;
-    floor.width = 200;
-    floor.height = 10;
+    floor = new Sprite(80, 150, 200, 10); {
     floor.color = 'lightgray';
     floor.collider = "static";
+    }
+    floorL = new Sprite(-6, 80, 10, 160); {
+    floorL.color = 'lightgray';
+    floorL.collider = "static";
+    }
+    floorR = new Sprite(166, 80, 10, 160); {
+    floorR.color = 'lightgray';
+    floorR.collider = "static";
     }
 }
 
 function draw() {
     clear();
-
+    background(227, 193, 137)
     boy.rotation = 0;
 
-    if (kb.pressing('left')){boy.vel.x = -1;
+
+    if (kb.pressing('left')){
+        boy.vel.x = -1;
+        boy.vel.y = 0;
         boy.changeAni('left');
+
     }
-    else if (kb.pressing('right')) {boy.vel.x = 1;
-        boy.changeAni('right');}
-    else if (kb.pressing('up')) {boy.vel.y = -1;
-        boy.changeAni('back');}
-    else if (kb.pressing('down')) {boy.vel.y = 1;
-        boy.changeAni('front');}
+    else if (kb.pressing('right')) {
+        boy.vel.x = 1;
+        boy.vel.y = 0;
+        boy.changeAni('right');
+
+    }
+    else if (kb.pressing('up')) {
+        boy.vel.y = -1;
+        boy.vel.x = 0;
+        boy.changeAni('back');
+
+    }
+    else if (kb.pressing('down')) {
+        boy.vel.y = 1;
+        boy.vel.x = 0;
+        boy.changeAni('front');
+
+    }
     else {boy.vel.x = 0;
-        boy.vel.y = 0};
+        boy.vel.y = 0;
+
+    }
 
     if (boy.overlaps(coin)) {
     coin.remove();
