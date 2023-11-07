@@ -101,7 +101,7 @@ function draw() {
     }
 
     if (score >= 5) {
-        location.href = "index2.html"
+        location.href = "index4.html"
     }
 }
 

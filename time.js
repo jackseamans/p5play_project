@@ -33,7 +33,7 @@ function draw() {
     }
 
     if (millis() > 6000) {
-        location.href = "index3.html"
+        location.href = "index5.html"
     }
 
 }
