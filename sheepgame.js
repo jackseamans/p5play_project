@@ -104,3 +104,4 @@ function draw() {
         location.href = "index2.html"
     }
 }
+

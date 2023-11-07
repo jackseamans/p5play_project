@@ -1,4 +1,4 @@
-let boy; floor; fence; wall; coin; coin2; score = 0;
+let boy; floor; fence; wall; brother; coin; coin2; coinCount = 0;
 
 function preload() {
     boy = new Sprite(55, 20, 17, 27);
@@ -11,7 +11,7 @@ function preload() {
     });
     boy.changeAni('front');
     boy.x = 10;
-    boy.y = 105;
+    boy.y = 60;
 }
 
 function setup() {
@@ -29,17 +29,24 @@ function setup() {
 
     coin = new Sprite(80, 60, 10);
     coin.color = 'yellow';
-    coin2 = new Sprite(80, 90, 10);
-	coin2.color = 'yellow';
     
-    bed1 = new Sprite(40, 87, 37, 55);
+    coin2 = new Sprite(35, -20, 60, 25);
+    coin2.textSize = 10;
+    coin2.text = "Dinner time!";
+	coin2.color = 'blue';
+    coin2.collider = "static";
+    
+    bed1 = new Sprite(20, 107, 37, 55);
     bed1.img = 'assets/Bed1Sprite.png';
     bed1.collider = "static";
 
-    bed2 = new Sprite(120, 87, 37, 55);
+    bed2 = new Sprite(138, 107, 37, 55);
     bed2.img = 'assets/Bed2Sprite.png';
     bed2.collider = "static"; 
     
+    brother = new Sprite(105, 120, 17, 27); 
+    brother.collider = "static";
+
     floor = new Sprite(80, 150, 200, 10); {
     floor.color = 'lightgray';
     floor.collider = "static";
@@ -48,7 +55,7 @@ function setup() {
     floorL.color = 'lightgray';
     floorL.collider = "static";
     }
-    floorR = new Sprite(166, 80, 10, 160); {
+    floorR = new Sprite(161, 75, 40, 100); {
     floorR.color = 'lightgray';
     floorR.collider = "static";
     }
@@ -57,6 +64,7 @@ function setup() {
 function draw() {
     clear();
     background(227, 193, 137)
+
     boy.rotation = 0;
 
 
@@ -90,12 +98,31 @@ function draw() {
     }
 
     if (boy.overlaps(coin)) {
-    coin.remove();
-    }
-    if (boy.overlaps(coin2)) {
-    coin2.remove();
+        coin.remove();
+        // fill(200);
+        // rect(50, 150, 100, 100); 
+        // fill(0)
+        // textSize(12);
+        // textAlign(CENTER, CENTER);
+        // text('Please Stay', 72, 50);
     }
 
-    
+    if (boy.x >= 80 && boy.x <= 115 && boy.y >= 85 && boy.y <= 150) {
+        fill(200);
+        rect(50, 150, 100, 100); 
+        fill(0)
+        textSize(12);
+        textAlign(CENTER, CENTER);
+        text('To Kitchen ->', 90, 40);
+        floorR.y = 115;
+        coin2.y = 15;
+        coin2.x = 35;
+    }
+    else {coin2.y = -20}
+
+    if (boy.x >= 175) {
+        location.href = "index2.html"
+    }
+
 
 }
