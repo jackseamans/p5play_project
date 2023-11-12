@@ -1,4 +1,4 @@
-let boy; floor; fence; wall; brother; coin; coin2; coinCount = 0;
+let boy; floor; fence; wall; brother; exPoint; coin; coin2; coinCount = 0;
 
 function preload() {
     boy = new Sprite(55, 20, 17, 27);
@@ -19,6 +19,14 @@ function setup() {
     frameRate(30);
     allSprites.pixelPerfect = true;
 
+    exPoint = new Sprite(105, 90, 0);
+    exPoint.text = "!";
+    exPoint.textColor = "red";
+    // exPoint.stroke = "black";
+    exPoint.textSize = 24;
+    
+    exPoint.collider = "static";
+
     wall = new Sprite(80, 15, 160, 31);
     wall.img = 'assets/BedroomWallSprite.png';
     wall.collider = "static";
@@ -33,8 +41,8 @@ function setup() {
     coin2 = new Sprite(35, -20, 60, 25);
     coin2.textSize = 10;
     coin2.text = "Dinner time!";
-	coin2.color = 'blue';
-    coin2.collider = "static";
+	coin2.color = 'white';
+    // coin2.collider = "static";
     
     bed1 = new Sprite(20, 107, 37, 55);
     bed1.img = 'assets/Bed1Sprite.png';
@@ -44,7 +52,8 @@ function setup() {
     bed2.img = 'assets/Bed2Sprite.png';
     bed2.collider = "static"; 
     
-    brother = new Sprite(105, 120, 17, 27); 
+    brother = new Sprite(105, 120, 17, 28); 
+    brother.img = "assets/BrotherL.png";
     brother.collider = "static";
 
     floor = new Sprite(80, 150, 200, 10); {
@@ -107,18 +116,29 @@ function draw() {
         // text('Please Stay', 72, 50);
     }
 
-    if (boy.x >= 80 && boy.x <= 115 && boy.y >= 85 && boy.y <= 150) {
+    if (boy.x >= 80 && boy.x <= 115 && boy.y >= 115 && boy.y <= 150) {
         fill(200);
         rect(50, 150, 100, 100); 
         fill(0)
         textSize(12);
         textAlign(CENTER, CENTER);
-        text('To Kitchen ->', 90, 40);
+        text('To Kitchen ->', 120, 40);
         floorR.y = 115;
-        coin2.y = 15;
-        coin2.x = 35;
+        coin2.y = 75;
+        coin2.x = 80;
+        exPoint.remove();
+        boy.ani.frame = 0;
+        boy.vel.x = 0;
+        boy.vel.y = 0;
+        if (kb.pressing('space')){
+            boy.x = 70;
+            boy.y = 120;
+        }
     }
-    else {coin2.y = -20}
+    else {
+        coin2.y = -20;
+        boy.ani.play();
+        }
 
     if (boy.x >= 175) {
         location.href = "index2.html"
