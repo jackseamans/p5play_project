@@ -23,7 +23,8 @@
 //     }
 // }
 
-let dinner1;
+let dinner1; 
+let pressA = false; 
 
 function preload() {
         // dinner1 = new Sprite(80, 72, 160, 144);
@@ -43,8 +44,13 @@ function draw() {
     clear();
     animation(dinner1, 80, 72);
     dinner1.stop();
+    dinner1.noLoop();
     if (kb.presses('ArrowRight')) {
         dinner1.nextFrame();
     }
+    if (kb.presses('Enter')) {
+        location.href = "index3.html";
+    }
 }
+
 
