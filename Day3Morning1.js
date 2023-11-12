@@ -1,4 +1,4 @@
-let dinner2; 
+let talk; 
 
 function preload() {
         // dinner1 = new Sprite(80, 72, 160, 144);
@@ -10,19 +10,19 @@ function preload() {
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    dinner2 = loadAnimation('assets/Day2Evening2.png', { frameSize: [160, 144], frames: 1});
+    talk = loadAnimation('assets/Day3Morning.png', { frameSize: [160, 144], frames: 10});
     
 }
 
 function draw() {
     clear();
-    animation(dinner2, 80, 72);
-    dinner2.stop();
-    dinner2.noLoop();
+    animation(talk, 80, 72);
+    talk.stop();
+    talk.noLoop();
     if (kb.presses('ArrowRight')) {
-        dinner2.nextFrame();
+        talk.nextFrame();
     }
     if (kb.presses('Enter')) {
-        location.href = "index11.html";
+        location.href = "index14.html";
     }
 }

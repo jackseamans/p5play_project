@@ -50,13 +50,15 @@ function setup() {
 
             '..........fff........',
             '..........fff........',
+            '..........fff........',
+            '..........fff........',
             'ggggggggggggggggggggg',
             'ddddddddddddddddddddd',
             'ddddddddddddddddddddd',
             'ddddddddddddddddddddd',
 
         ],
-        0, 100, // x, y
+        0, 80, // x, y
         8, 8 // w, h
     );
 
@@ -101,7 +103,7 @@ function draw() {
     }
 
     if (score >= 5) {
-        location.href = "index4.html"
+        location.href = "index12.html"
     }
 }
 

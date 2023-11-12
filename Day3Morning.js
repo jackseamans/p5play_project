@@ -51,8 +51,7 @@ function draw() {
     }
 
     if (boy.x >= 138) {
-        boy.vel.x = 0;
-        boy.ani.frame = 0;
+        location.href = "index13.5.html";
     }
 
 }

@@ -28,8 +28,14 @@ function setup() {
     shelf.img = 'assets/BookshelfSprite.png'
     shelf.collider = "static";
 
-    coin = new Sprite(80, 60, 10);
-    coin.color = 'yellow';
+    sock = new Sprite(150, 45, 12, 23);
+    sock.img = 'assets/Sock.png';
+
+    gameboy = new Sprite(-50, 60, 14, 19);
+    gameboy.img = 'assets/Gameboy.png';
+    
+    bottle = new Sprite(-50, 130, 12, 21);
+    bottle.img = 'assets/Bottle.png';
     
     bed1 = new Sprite(20, 107, 37, 55);
     bed1.img = 'assets/Bed1Sprite.png';
@@ -47,7 +53,7 @@ function setup() {
     floorL.color = 'lightgray';
     floorL.collider = "static";
     }
-    floorR = new Sprite(161, 75, 40, 100); {
+    floorR = new Sprite(181, 75, 40, 100); {
     floorR.color = 'lightgray';
     floorR.collider = "static";
     }
@@ -87,6 +93,19 @@ function draw() {
     else {boy.vel.x = 0;
         boy.vel.y = 0;
 
+    }
+
+    if (boy.overlaps(sock)) {
+        sock.remove();
+        gameboy.x = 15;
+    }
+    if (boy.overlaps(gameboy)) {
+        gameboy.remove();
+        bottle.x = 110;
+    }
+    if (boy.overlaps(bottle)) {
+        bottle.remove();
+        location.href = "index7.html";
     }
 }
 
