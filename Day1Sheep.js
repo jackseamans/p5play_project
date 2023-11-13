@@ -47,8 +47,7 @@ function setup() {
 
     new Tiles(
         [
-
-            '..........fff........',
+                '..........fff........',
             '..........fff........',
             'ggggggggggggggggggggg',
             'ddddddddddddddddddddd',
