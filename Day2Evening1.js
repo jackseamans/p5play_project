@@ -10,7 +10,7 @@ function preload() {
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    dinner2 = loadAnimation('assets/Day2Evening1.png', { frameSize: [160, 144], frames: 2});
+    dinner2 = loadAnimation('assets/Day2Evening1.png', { frameSize: [160, 144], frames: 3});
     
 }
 
@@ -22,7 +22,7 @@ function draw() {
     if (kb.presses('ArrowRight')) {
         dinner2.nextFrame();
     }
-    if (kb.presses('Enter')) {
+    if (kb.presses('c')) {
         location.href = "index11.html";
     }
 }

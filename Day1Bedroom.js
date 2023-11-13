@@ -1,4 +1,4 @@
-let boy; floor; fence; wall; brother; exPoint; coin; coin2; coinCount = 0;
+let boy; floor; fence; wall; brother; exPoint; chat; arrow;
 
 function preload() {
     boy = new Sprite(55, 20, 17, 27);
@@ -19,13 +19,9 @@ function setup() {
     frameRate(30);
     allSprites.pixelPerfect = true;
 
-    exPoint = new Sprite(105, 90, 0);
-    exPoint.text = "!";
-    exPoint.textColor = "red";
-    // exPoint.stroke = "black";
-    exPoint.textSize = 24;
-    
-    exPoint.collider = "static";
+    exPoint = new Sprite(105, 93, 16, 16);
+    exPoint.img = "assets/Point.png"
+
 
     wall = new Sprite(80, 15, 160, 31);
     wall.img = 'assets/BedroomWallSprite.png';
@@ -34,16 +30,17 @@ function setup() {
     shelf = new Sprite(20, 28, 40, 32);
     shelf.img = 'assets/BookshelfSprite.png'
     shelf.collider = "static";
+    
+    chat = new Sprite(-100, 34, 117, 56);
+    chat.img = 'assets/Chat.png'
+    chat.collider = "static";
+    chat.overlaps(wall);
 
-    coin = new Sprite(80, 60, 10);
-    coin.color = 'yellow';
-    
-    coin2 = new Sprite(35, -20, 60, 25);
-    coin2.textSize = 10;
-    coin2.text = "Dinner time!";
-	coin2.color = 'white';
-    // coin2.collider = "static";
-    
+    arrow = new Sprite(-200, -200, 46, 20)
+    arrow.img = "assets/Hour.png"
+    arrow.overlaps(wall);
+    arrow.collider = "static";
+
     bed1 = new Sprite(20, 107, 37, 55);
     bed1.img = 'assets/Bed1Sprite.png';
     bed1.collider = "static";
@@ -64,7 +61,7 @@ function setup() {
     floorL.color = 'lightgray';
     floorL.collider = "static";
     }
-    floorR = new Sprite(161, 75, 40, 100); {
+    floorR = new Sprite(181, 75, 40, 100); {
     floorR.color = 'lightgray';
     floorR.collider = "static";
     }
@@ -106,38 +103,25 @@ function draw() {
 
     }
 
-    if (boy.overlaps(coin)) {
-        coin.remove();
+    
+
+    if (boy.x >= 80 && boy.x <= 115 && boy.y >= 115 && boy.y <= 150) {
         // fill(200);
         // rect(50, 150, 100, 100); 
         // fill(0)
         // textSize(12);
         // textAlign(CENTER, CENTER);
-        // text('Please Stay', 72, 50);
-    }
+        // text('To Kitchen ->', 120, 40);
+        floorR.y = 140;
+        chat.y = 62;
+        chat.x = 76;
+        exPoint.y = 600;
+        arrow.y = 27;
+        arrow.x = 120;
 
-    if (boy.x >= 80 && boy.x <= 115 && boy.y >= 115 && boy.y <= 150) {
-        fill(200);
-        rect(50, 150, 100, 100); 
-        fill(0)
-        textSize(12);
-        textAlign(CENTER, CENTER);
-        text('To Kitchen ->', 120, 40);
-        floorR.y = 115;
-        coin2.y = 75;
-        coin2.x = 80;
-        exPoint.remove();
-        boy.ani.frame = 0;
-        boy.vel.x = 0;
-        boy.vel.y = 0;
-        if (kb.pressing('space')){
-            boy.x = 70;
-            boy.y = 120;
-        }
     }
     else {
-        coin2.y = -20;
-        boy.ani.play();
+        chat.y = -100;
         }
 
     if (boy.x >= 175) {

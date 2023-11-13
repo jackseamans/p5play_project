@@ -10,7 +10,7 @@ function preload() {
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    talk = loadAnimation('assets/Day3Morning.png', { frameSize: [160, 144], frames: 10});
+    talk = loadAnimation('assets/Day3Morning.png', { frameSize: [160, 144], frames: 11});
     
 }
 
@@ -22,7 +22,7 @@ function draw() {
     if (kb.presses('ArrowRight')) {
         talk.nextFrame();
     }
-    if (kb.presses('Enter')) {
+    if (kb.presses('s')) {
         location.href = "index14.html";
     }
 }

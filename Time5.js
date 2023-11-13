@@ -1,43 +1,40 @@
-let time;
-let time2;
-let prstart;
+let time1, time2; time3; time4; time5;
 
 function setup() {
-    new Canvas(160, 144, 'pixelated x4');
-    world.gravity.y = 1;
-
-    time = new Sprite(72, -120, 5, 10);
-    time.color = 'black';
-    time.stroke = 'black';
-    time.textSize = 16;
-    time.text = "8:30AM";
-    time.textColor = "white";
-
-	time2 = new Sprite(72, 80, 5, 10, 'static');
-    time2.color = 'black';
-    time2.stroke = 'black';
-    time2.textSize = 16;
-    time2.text = "9:37PM";
-    time2.textColor = "white";
-
+	new Canvas (160, 144, 'pixelated x4')
+	time1 = new Sprite(80, 72, 5, 5);
+	time2 = new Sprite(200, 300, 5, 5);
+	time3 = new Sprite(200, 400, 5, 5);
+	time4 = new Sprite(200, 500, 5, 5);
+	time5 = new Sprite(200, 600, 5, 5);
+	
 }
 
 function draw() {
 
-   clear();
-   background("black");
-    if (time.collided(time2)) {
-        world.gravity.y = 8;
-        time2.collider = 'dynamic';
-        time.collider = 'static';
-    }
+	clear();
+	if (millis() >= 1000) {
+	  time1.x = -100
+	  time2.x = 80
+	  time2.y = 72
+	}
+	if (millis() >= 2000) {
+	  time2.x = -200
+	  time3.x = 80
+	  time3.y = 72
+	}
+	if (millis() >= 3000) {
+	  time3.x = -300
+	  time4.x = 80
+	  time4.y = 72
+	}
+	if (millis() >= 4000) {
+	  time4.x = -400
+	  time5.x = 80
+	  time5.y = 72
+	}
+	if (millis() >= 6000) {
+		location.href = "index20.html"
+	}
 
-    if (millis() > 6000) {
-        location.href = "index20.html"
-    }
-
-}
-
-function preload(){
-    prstart = loadFont('assets/prstart.ttf');
 }

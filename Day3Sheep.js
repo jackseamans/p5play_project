@@ -7,7 +7,7 @@ function preload() {
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    talk = loadAnimation('assets/Day3Sheep.png', { frameSize: [160, 144], frames: 8});
+    talk = loadAnimation('assets/Day3Sheep.png', { frameSize: [160, 144], frames: 9});
     
     // grass = new Group();
     // grass.collider = "static";
@@ -53,7 +53,7 @@ function draw() {
     if (kb.presses('ArrowRight')) {
         talk.nextFrame();
     }
-    if (kb.presses('a')) {
+    if (kb.presses('s')) {
         location.href = "index19.html";
     }
 }

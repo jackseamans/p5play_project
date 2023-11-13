@@ -15,7 +15,7 @@ function draw() {
     if (millis() > 3000) {
         background(sheetImg2)
     }
-    if (kb.presses('A')) {
+    if (kb.presses('c')) {
         location.href = "index6.html";
     }
 }

@@ -2,7 +2,7 @@ let dinner2;
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    dinner2 = loadAnimation('assets/Day3Evening2.png', { frameSize: [160, 144], frames: 10});
+    dinner2 = loadAnimation('assets/Day3Evening2.png', { frameSize: [160, 144], frames: 11});
     
 }
 
@@ -14,7 +14,7 @@ function draw() {
     if (kb.presses('ArrowRight')) {
         dinner2.nextFrame();
     }
-    if (kb.presses('Enter')) {
+    if (kb.presses('c')) {
         location.href = "index18.html";
     }
 }

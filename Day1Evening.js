@@ -23,20 +23,11 @@
 //     }
 // }
 
-let dinner1; 
-let pressA = false; 
-
-function preload() {
-        // dinner1 = new Sprite(80, 72, 160, 144);
-        // dinner1.spriteSheet = 'assets/Dinner1.png';
-        // dinner1.addAnis({
-        //     frame: { row: 0, frames: 31 },
-        // });
-}
+let dinner1;
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    dinner1 = loadAnimation('assets/Dinner1.png', { frameSize: [160, 144], frames: 31 });
+    dinner1 = loadAnimation('assets/Day1Evening.png', { frameSize: [160, 144], frames: 31 });
     
 }
 
@@ -48,7 +39,7 @@ function draw() {
     if (kb.presses('ArrowRight')) {
         dinner1.nextFrame();
     }
-    if (kb.presses('Enter')) {
+    if (kb.presses('c')) {
         location.href = "index3.html";
     }
 }
