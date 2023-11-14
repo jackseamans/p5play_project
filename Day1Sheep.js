@@ -4,7 +4,7 @@ let fence;
 let score = 0;
 
 function preload() {
-    sheetImg = loadImage("assets/Tiles-and-Enemies.png" );
+    sheetImg = loadImage("assets/Ground.png" );
     sky = loadImage("assets/NightSky.gif");
     sheep = new Sprite(5, 10, 60, 52);
     sheep.spriteSheet = 'assets/SheepSprite.png';
@@ -30,29 +30,41 @@ function setup() {
     grass = new Group();
     grass.collider = "static";
     grass.spriteSheet = sheetImg;
-    grass.addAni({ w:8, h:8, row: 3, col: 3});
+    grass.addAni({ w:8, h:8, row: 0, col: 0});
     grass.tile = 'g';
+    
+    grass2 = new Group();
+    grass2.collider = "static";
+    grass2.spriteSheet = sheetImg;
+    grass2.addAni({ w:8, h:8, row: 0, col: 1});
+    grass2.tile = 'r';
     
     fence = new Group();
     fence.collider = "static";
     fence.spriteSheet = sheetImg;
-    fence.addAni({ w:8, h:8, row: 10, col: 3});
+    fence.addAni({ w:8, h:8, row: 0, col: 4});
     fence.tile = 'f';
     
     dirt = new Group();
     dirt.collider = "static";
     dirt.spriteSheet = sheetImg;
-    dirt.addAni({ w:8, h:8, row: 9, col: 1});
+    dirt.addAni({ w:8, h:8, row: 0, col: 2});
     dirt.tile = 'd';
+    
+    dirt2 = new Group();
+    dirt2.collider = "static";
+    dirt2.spriteSheet = sheetImg;
+    dirt2.addAni({ w:8, h:8, row: 0, col: 3});
+    dirt2.tile = 'i';
 
     new Tiles(
         [
-                '..........fff........',
             '..........fff........',
-            'ggggggggggggggggggggg',
-            'ddddddddddddddddddddd',
-            'ddddddddddddddddddddd',
-            'ddddddddddddddddddddd',
+            '..........fff........',
+            'rggrgrggrgggrggrgrgrg',
+            'rggrgrgrggrgrrgggggrr',
+            'grgrgggrrrgrgggrgrgrg',
+            'ddidididddiiiddididdd',
 
         ],
         0, 100, // x, y
@@ -72,7 +84,6 @@ function draw() {
 
     if (kb.pressing('left')) {
         sheep.vel.x = -1;
-        // sheep.changeAni('left');
     }
     else if (kb.pressing('right')) {
         sheep.vel.x = 1;

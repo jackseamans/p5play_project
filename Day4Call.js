@@ -2,7 +2,7 @@ let call;
 
 function setup() {
     new Canvas(160, 144, 'pixelated x4');
-    call = loadAnimation('assets/Day4Call.png', { frameSize: [160, 144], frames: 10});
+    call = loadAnimation('assets/Day4Call.png', { frameSize: [160, 144], frames: 9});
     
 }
 

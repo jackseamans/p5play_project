@@ -105,7 +105,7 @@ function draw() {
     }
     if (boy.overlaps(bottle)) {
         bottle.remove();
-        location.href = "index7.html";
+        location.href = "index6.5.html";
     }
 }
 
