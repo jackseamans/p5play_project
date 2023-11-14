@@ -109,7 +109,7 @@ function draw() {
 	}
 
     if (millis() > 6000) {
-        location.href = "index5.html"
+        location.href = "index14.5.html"
     }
 
 }

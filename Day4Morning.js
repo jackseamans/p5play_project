@@ -24,6 +24,6 @@ function draw() {
         talk.nextFrame();
     }
     if (kb.presses('Enter')) {
-        location.href = "index21.html";
+        location.href = "index22.html";
     }
 }
