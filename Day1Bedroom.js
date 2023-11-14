@@ -116,7 +116,7 @@ function draw() {
         chat.y = 62;
         chat.x = 76;
         exPoint.y = 600;
-        arrow.y = 27;
+        arrow.y = 24;
         arrow.x = 120;
 
     }
