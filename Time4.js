@@ -24,8 +24,8 @@ function draw() {
 
 	clear();
 	background(sheetImg)
-	if (kb.presses('n')) new Sprite(random(5, 155), random(100, 144), 
-    10);
+	// if (kb.presses('n')) new Sprite(random(5, 155), random(100, 144), 
+    // 10);
 
 	// if (millis() >= 5000) {
 		
